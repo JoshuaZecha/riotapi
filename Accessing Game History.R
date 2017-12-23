@@ -17,11 +17,11 @@ library(stringr)
 # This instruction is FOR EUW
 #Replace the <text> with own values
 # Input: Summoner name + API Key
-SUMMONERNAME <- as.data.frame("<Summonername>")
+SUMMONERNAME <- as.data.frame("Nixmuss")
 names(SUMMONERNAME)[1]<- "summonername"
 SUMMONERNAME$summonername<-as.character(SUMMONERNAME$summonername)
 
-APIKEY <- as.data.frame("<API_KEY>")
+APIKEY <- as.data.frame("RGAPI-d9b91732-1ee1-4067-a2c1-5158f3ad618e")
 names(APIKEY)[1]<- "key"
 APIKEY$key <-as.character(APIKEY$key)
 
@@ -36,11 +36,11 @@ baselinkforjsonsummoner$full_link_summoner <- str_replace_all(baselinkforjsonsum
 
 #  Now I use the created link in baselinkforjsonsummoner$full_link_summoner to fetch the summoner data from the Riot API as json
 jsonsummoner <- fromJSON(baselinkforjsonsummoner$full_link_summoner)
-# convert to df
 jsonsummoner<-as.data.frame(jsonsummoner)
 summonerID <-jsonsummoner%>%select(accountId)
 summonerID$accountId<-as.character(summonerID$accountId)
 
+# This step accesses the match history:
 baselinkforjsonsummID<-as.data.frame(c("https://euw1.api.riotgames.com//lol/match/v3/matchlists/by-account/SUMMONERID/recent?api_key=APIKEY"))
 names(baselinkforjsonsummID)[1]<- "link"
 
@@ -51,13 +51,4 @@ baselinkforjsonsummID$full_link_recentML <- str_replace_all(baselinkforjsonsummI
 
 jsonrecentgames <- fromJSON(baselinkforjsonsummID$full_link_recentML)
 jsonrecentgames<-as.data.frame(jsonrecentgames)
-
-###Extracting a Champion ID (ID)in this case Teemo or LULU)#######
-
-###this may depend on patch:
-allchampions <- fromJSON("http://ddragon.leagueoflegends.com/cdn/7.24.2/data/en_US/champion.json")
-allchampions<-as.data.frame(allchampions)
-lulu_id<-allchampions%>%select(data.Lulu.key)%>%filter( row_number() == 1L)
-teemo_id<-allchampions%>%select(data.Teemo.key)%>%filter( row_number() == 1L)
-teemo_id$data.Teemo.key<-as.character(teemo_id$data.Teemo.key)
-
+jsonrecentgames
