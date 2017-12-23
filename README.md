@@ -1,7 +1,7 @@
 # Accessing the RIOT API with R - 
 File: Accessing Game History.R
 ## What does this file do?
-It extracts the json info retrieved from the riot api into R data frames. These data frames can be further analyzed with the knwon R tools.
+It extracts the json info retrieved from the riot api into R data frames. These data frames can be further analyzed with the known R toolset. The provided code gives a working basis for further requests which can be looked up under the following link  https://developer.riotgames.com/api-methods/ .
 
 ## What is my output?
 
