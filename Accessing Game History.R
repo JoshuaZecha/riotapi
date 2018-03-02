@@ -17,11 +17,11 @@ library(stringr)
 # This instruction is FOR EUW
 #Replace the <text> with own values
 # Input: Summoner name + API Key
-SUMMONERNAME <- as.data.frame("Nixmuss")
+SUMMONERNAME <- as.data.frame("<SUMMONERNAME HERE>")
 names(SUMMONERNAME)[1]<- "summonername"
 SUMMONERNAME$summonername<-as.character(SUMMONERNAME$summonername)
 
-APIKEY <- as.data.frame("RGAPI-d9b91732-1ee1-4067-a2c1-5158f3ad618e")
+APIKEY <- as.data.frame("<KEY HERE>")
 names(APIKEY)[1]<- "key"
 APIKEY$key <-as.character(APIKEY$key)
 
